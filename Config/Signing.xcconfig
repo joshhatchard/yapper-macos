@@ -1,0 +1,15 @@
+// Code signing for the Yapper app target.
+//
+// Default: ad-hoc ("Sign to Run Locally"), so anyone can build without an Apple developer account.
+// macOS ties privacy permissions (Microphone, Accessibility, Input Monitoring) to the code signature,
+// and an ad-hoc signature changes on every build, so you may have to re-grant them after rebuilding.
+//
+// To keep permissions across rebuilds, sign with your own free or paid Apple Development identity:
+// copy Config/Signing.local.xcconfig.example to Config/Signing.local.xcconfig (gitignored) and set
+// your team ID (Xcode > Settings > Accounts, or `security find-identity -v -p codesigning`).
+
+CODE_SIGN_STYLE = Manual
+CODE_SIGN_IDENTITY = -
+DEVELOPMENT_TEAM =
+
+#include? "Signing.local.xcconfig"
